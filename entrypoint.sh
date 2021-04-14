@@ -5,7 +5,10 @@ if [[ "$USER" = "" ]]; then
   exit 1
 fi
 
-useradd -s /sbin/nologin $USER
+if [[ "$LOGIN_SHELL" = "" ]]; then
+  LOGIN_SHELL=/sbin/nologin
+fi
+useradd -s $LOGIN_SHELL $USER
 mkdir /home/$USER
 chown $USER:$USER /home/$USER
 if [[ "$AUTHORIZED_KEYS_URL" != "" ]]; then
