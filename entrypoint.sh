@@ -11,6 +11,7 @@ fi
 useradd -s $LOGIN_SHELL $USER
 mkdir /home/$USER
 chown $USER:$USER /home/$USER
+echo "$USER ALL=(ALL:ALL) NOPASSWD: ALL" > /etc/sudoers.d/sudoers
 if [[ "$AUTHORIZED_KEYS_URL" != "" ]]; then
   mkdir -p /home/$USER/.ssh
   curl $AUTHORIZED_KEYS_URL > /home/$USER/.ssh/authorized_keys
