@@ -1,0 +1,15 @@
+name: "build"
+
+on:
+  push:
+    branches:
+    - master
+  workflow_dispatch:
+
+
+jobs:
+  build:
+    uses: takutakahashi/github-actions/.github/workflows/ghcr.yaml@main
+    with:
+      path: .
+      image: takutakahashi/sshd:latest
